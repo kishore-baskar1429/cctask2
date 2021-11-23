@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Edit member</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        table button { background: none; border: none; padding: 0; }
+        table button:hover { cursor: pointer; }
+    </style>
+    <script src="/js/members-edit.js"></script>
+    <script>
+        const memberId = {{MemberId}};
+    </script>
+</head>
+<body>
+
+<header>
+{{>navpartial}}
+</header>
+
+<main>
+
+<h1>Edit member</h1>
+
+{{>errpartial}}
+
+<form method="post">
+    <ul>
+        <li>
+            <label for="Firstname">First name</label>
+            <input name="Firstname" id="Firstname" value="{{Firstname}}" class="w16" autofocus>
+        </li>
+        <li>
+            <label for="Lastname">Last name</label>
+            <input name="Lastname" id="Lastname" value="{{Lastname}}" class="w16">
+        </li>
+        <li>
+            <label for="Email">E-mail</label>
+            <input name="Email" id="Email" type="email" value="{{Email}}" class="w16" required>
+        </li>
+        <li>
+            <label for="Active">Active</label>
+            <input name="Active" id="Active" type="checkbox" {{#if Active}}checked{{/if}}>
+        </li>
+        <li>
+            <label></label>
+            <button type="submit" class="green" title="Update">✔</button>
+        </li>
+    </ul>
+</form>
+
+<h2>Teams</h2>
+
+<table>
+    <tr>
+        <td>
+            <select name="add-membership" required class="add-membership hide">
+                <option></option>
+                {{#notMemberOfTeams}}
+                <option value="{{TeamId}}">{{Name}}</option>
+                {{/notMemberOfTeams}}
+            </select>
+        </td>
+        <td><button type="button" class="add-membership fa fa-plus small grey" title="add membership"></button></td>
+    </tr>
+    {{#memberOfTeams}}
+    <tr id="{{TeamId}}">
+        <td>{{Name}}</td>
+        <td><button type="button" value="{{TeamMemberId}}" class="delete-membership fa fa-trash-o small grey" title="delete membership"></button></td>
+    </tr>
+    {{/memberOfTeams}}
+</table>
+
+
+</main>
+
+</body>
+</html>

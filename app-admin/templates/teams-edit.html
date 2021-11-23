@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Edit team</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        table button { background: none; border: none; padding: 0; }
+        table button:hover { cursor: pointer; }
+    </style>
+    <script src="/js/teams-edit.js"></script>
+    <script>
+        const teamId = {{TeamId}};
+    </script>
+</head>
+<body>
+
+<header>
+{{>navpartial}}
+</header>
+
+<main>
+
+<h1>Edit team</h1>
+
+{{>errpartial}}
+
+    <form method="post">
+        <ul>
+            <li>
+                <label for="Name">Name</label>
+                <input name="Name" id="Name" value="{{Name}}" required autofocus class="w16">
+            </li>
+            <li>
+                <label></label>
+                <button type="submit" class="green" title="Update">✔</button>
+            </li>
+        </ul>
+    </form>
+
+<h2>Members</h2>
+
+<table>
+    <tr>
+        <td>
+            <select name="add-membership" required class="add-membership hide">
+                <option></option>
+                {{#notTeamMembers}}
+                <option value="{{MemberId}}">{{Firstname}} {{Lastname}}</option>
+                {{/notTeamMembers}}
+            </select>
+        </td>
+        <td><button type="submit" class="add-membership fa fa-plus small grey" title="add membership"></button></td>
+    </tr>
+    {{#teamMembers}}
+    <tr id="{{MemberId}}">
+        <td>{{Firstname}} {{Lastname}}</td>
+        <td><button type="button" value="{{TeamMemberId}}" class="delete-membership fa fa-trash small grey" title="delete membership"></button></td>
+    </tr>
+    {{/teamMembers}}
+</table>
+
+
+</main>
+
+</body>
+</html>

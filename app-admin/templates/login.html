@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<header>
+{{>navpartial}}
+</header>
+
+<main>
+
+<h1>Login</h1>
+
+{{>errpartial}}
+
+{{#if @koa.state.auth}}
+
+<p>You are currently logged in as <span id="name">{{@koa.state.auth.user.name}}</span>
+    (with <span id="role">{{@koa.state.auth.user.Role}}</span> privileges).</p>
+
+{{else}}
+
+<form method="post">
+    <ul>
+        <li>
+            <label for="username">E-mail</label>
+            <input name="username" id="username" type="email" value="{{username}}" required class="w16" autofocus>
+        </li>
+        <li>
+            <label for="password">Password</label>
+            <input name="password" id="password" type="password" class="w16" required>
+        </li>
+        <li>
+            <label></label>
+            <input type="checkbox" name="remember-me" id="remember-me">
+            <label for="remember-me" title="for up to 7 days inactivity" class="grey">remember me</label>
+        </li>
+        <li>
+            <label></label>
+            <button type="submit" class="green" title="Login">✔</button>
+            {{#if @koa.flash.loginfailmsg}}<span class="error-msg">{{@koa.flash.loginfailmsg}}</span>{{/if}}
+        </li>
+    </ul>
+</form>
+
+<p><a href="/password/reset-request">Forgotten password</a></p>
+
+<p>Test logins:</p>
+<ul>
+    <li><i>guest@user.com/guest</i> for read-only access</li>
+    <li><i>admin@user.com/admin</i> for full access</li>
+</ul>
+
+{{/if}}
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+{
+  "name": "koa-sample-web-app-api-mysql",
+  "description": "Koa Sample App (handlebars templating + RESTful API using MySQL, on Node.js)",
+  "author": "Chris Veness",
+  "license": "MIT",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/chrisveness/koa-sample-web-app-api-mysql.git"
+  },
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "start-dev": "nodemon -e js,json,html -r dotenv/config app.js",
+    "start-devtools": "nodemon --inspect -e js,json,html -r dotenv/config app.js",
+    "test": "npm run test-unit && npm run test-intgn && npm run test-frontend",
+    "test-node": "npm run test-unit && npm run test-intgn",
+    "test-unit": "mocha --exit test/unit/*.js",
+    "test-intgn": "mocha --exit test/integration/*.js",
+    "test-frontend": "testcafe chrome:headless,firefox:headless test/frontend/*-tests.js --app 'node -r dotenv/config app.js'",
+    "lint": "eslint --ignore-pattern app-api/apidoc .",
+    "cover": "c8 -r html npm test",
+    "apidoc": "apidoc -i app-api -o app-api/apidoc/apidoc"
+  },
+  "engines": {
+    "node": ">=10.5.0"
+  },
+  "dependencies": {
+    "dateformat": "^3.0.0",
+    "debug": "^4.0.0",
+    "handlebars": "^4.0.0",
+    "html-to-text": "^5.0.0",
+    "isemail": "^3.0.0",
+    "js-yaml": "^3.0.0",
+    "jsdom": "^16.0.0",
+    "jsonwebtoken": "^8.0.0",
+    "koa": "^2.0.0",
+    "koa-body": "^4.0.0",
+    "koa-compose": "^4.0.0",
+    "koa-compress": "^4.0.0",
+    "koa-convert": "^1.0.0",
+    "koa-flash": "^1.0.0",
+    "koa-handlebars": "^2.0.0",
+    "koa-lusca": "koajs/koa-lusca#pull/19/head",
+    "koa-router": "^9.0.0",
+    "koa-session": "^6.0.0",
+    "koa-static": "^5.0.0",
+    "markdown-it": "^11.0.0",
+    "mongodb": "^3.0.0",
+    "mysql2": "^2.0.0",
+    "node-fetch": "^2.0.0",
+    "nodejs-info": "^1.0.0",
+    "nodemailer": "^6.0.0",
+    "scrypt-kdf": "^2.0.0",
+    "useragent": "^2.0.0",
+    "xmlify": "^1.0.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.23.0",
+    "c8": "^7.0.0",
+    "chai": "chaijs/chai",
+    "dotenv": "^8.0.0",
+    "eslint": "^7.0.0",
+    "mocha": "^8.0.0",
+    "nodemon": "^2.0.0",
+    "supertest": "^4.0.0",
+    "testcafe": "^1.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "array-bracket-spacing": [ "error", "always" ],
+      "comma-dangle": [ "error", "always-multiline" ],
+      "comma-spacing": [ "error" ],
+      "curly": [ "error", "multi-line" ],
+      "indent": [ "error", 4, { "SwitchCase": 1 } ],
+      "key-spacing": [ "error", { "align": "value" } ],
+      "keyword-spacing": [ "error" ],
+      "no-case-declarations": "off",
+      "no-console": [ "warn", { "allow": [ "error", "info", "debug" ] } ],
+      "no-redeclare": "warn",
+      "no-shadow": "warn",
+      "no-unused-vars": "warn",
+      "no-var": "error",
+      "object-curly-spacing": [ "error", "always" ],
+      "prefer-const": "error",
+      "quotes": [ "error", "single", "avoid-escape" ],
+      "require-await": "error",
+      "semi": [ "error", "always" ],
+      "space-before-blocks": [ "error", "always" ],
+      "space-in-parens": [ "error" ],
+      "strict": [ "error", "global" ]
+    }
+  }
+}

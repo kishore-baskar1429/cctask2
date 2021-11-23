@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Koa Sample App (handlebars templating + RESTful API using MySQL, on Node.js)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<header>
+{{>navpartial}}
+</header>
+
+<main>
+
+<h1>Koa Sample App (handlebars templating + RESTful API using MySQL, on Node.js)</h1>
+
+<p>This is the web-based  ‘admin’ section of the Koa Sample App
+    <a href="http://github.com/chrisveness/koa-sample-web-app-api-mysql">
+    github.com/chrisveness/koa-sample-web-app-api-mysql</a>.</p>
+
+<hr>
+
+{{#if @koa.state.auth}}
+<p>The functionality is trivial; the point is to showcase the code supporting it.</p>
+<p><a href="/apidoc/">API documentation</a> is also available.</p>
+{{else}}
+<p>All admin functionality requires <a href="/login">logging in</a>.</p>
+{{/if}}
+
+<p>For more details, see the <a href="http://www.{{@koa.state.domain}}">www</a> section.</p>
+
+</main>
+
+</body>
+</html>

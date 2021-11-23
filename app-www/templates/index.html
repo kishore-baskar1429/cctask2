@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Koa Sample App (handlebars templating + RESTful API using MySQL, on Node.js)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/www.css">
+    <style>
+        pre  {
+            background-color: #f7f7f7;
+            font: 0.8em 'Lucida Console', Consolas, Monaco, 'Andale Mono', monospace;
+            line-height: 1.2;
+            padding: 1rem;
+            white-space: pre-wrap;  /* these two declarations allow the long */
+            word-break: break-word; /* lines in the test-data section to wrap */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+{{>navpartial}}
+</header>
+
+<main>
+
+<p>This is the (unsecured) ‘www’ section of the Koa Sample App
+    <a href="http://github.com/chrisveness/koa-sample-web-app-api-mysql">
+    github.com/chrisveness/koa-sample-web-app-api-mysql</a>, showing the github readme.</p>
+
+<hr>
+
+{{{content}}}
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{Name}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<header>
+{{>navpartial}}
+</header>
+
+<main>
+
+<h1>{{Name}}</h1>
+
+<h2>Details</h2>
+
+<table>
+    <tr>
+        <th>Name:</th>
+        <td>{{Name}}</td>
+    </tr>
+</table>
+
+{{#if members}}
+<p>Team members:
+    {{#members}}
+    <a href="/members/{{MemberId}}">{{Firstname}} {{Lastname}}{{#unless @last}},{{/unless}}</a>
+    {{/members}}
+</p>
+{{else}}
+<p>No team members.</p>
+{{/if}}
+
+</main>
+
+</body>
+</html>
